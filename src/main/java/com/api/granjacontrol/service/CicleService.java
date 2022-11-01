@@ -2,6 +2,7 @@ package com.api.granjacontrol.service;
 
 import com.api.granjacontrol.model.CadastroCiclo;
 import com.api.granjacontrol.repository.CadastroCicloRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -40,5 +41,13 @@ public class CicleService {
     @Transactional
     public void delete(CadastroCiclo cadastroCiclo) {
         cadastroCicloRepository.delete(cadastroCiclo);
+    }
+
+    public void update(CadastroCiclo cadastroCiclo, UUID id){
+        Optional<CadastroCiclo> ciclo = cadastroCicloRepository.findById(id);
+        ciclo.get().setRaca(cadastroCiclo.getRaca());
+        ciclo.get().setQuantidade(cadastroCiclo.getQuantidade());
+        ciclo.get().setPeso(cadastroCiclo.getPeso());
+        cadastroCicloRepository.save(ciclo.get());
     }
 }

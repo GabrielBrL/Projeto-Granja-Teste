@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+</head>
+<body>
+<h1>Login</h1>
+<form th:action="@{/cadastro}" th:object="${loginForm}" method="post">
+    <label for="username">Usuário</label>
+    <input type="text" id="username" name="username" autofocus="autofocus" />
+    <label for="userapelido">Apelido</label>
+    <input type="text" id="userapelido" name="userapelido"/>
+    <label for="userfuncao">Função</label>
+    <input type="password" id="userfuncao" name="userfuncao" />
+    <label for="useremail">Email</label>
+    <input type="email" id="useremail" name="useremail" />
+    <label for="usersenha">Senha</label>
+    <input type="password" id="usersenha" name="usersenha" />
+    <br/>
+    <input type="submit" value="Salvar" />
+</form>
+</body>
+</html>

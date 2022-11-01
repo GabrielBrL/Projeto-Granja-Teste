@@ -40,6 +40,7 @@ public class CicleController {
         var allValues =  cicleService.findAll();
         model.addAttribute("allValues", allValues);
         model.addAttribute("cicle", new CadastroCiclo());
+        model.getAttribute("usuario");
         return "home/index";
     }
     @GetMapping("/{id}")
@@ -63,17 +64,28 @@ public class CicleController {
 
         return "redirect:/cicle";
     }
-    @PutMapping("/edit/{id}")
+    @GetMapping("/edit/{id}")
+    public String getOneCicleToEdit(@PathVariable(value = "id") UUID id, Model model){
+        Optional<CadastroCiclo> cicleServicelOptional = cicleService.findById(id);
+        if(!cicleServicelOptional.isPresent()){
+            return "Not found!";
+        }
+
+        var value = cicleServicelOptional.get();
+        model.addAttribute("value", value);
+        return "home/edit";
+    }
+    @PostMapping("/edit/{id}")
     public String updateCicle(@PathVariable(value = "id") UUID id,
                                                     @Valid @ModelAttribute CicleDto cicleDto){
         Optional<CadastroCiclo> cicloOptional = cicleService.findById(id);
         if(!cicloOptional.isPresent()){
             return "Cicle not found.";
         }
+        //cicleService.delete(cicloOptional.get());
         var cicleModel = new CadastroCiclo();
         BeanUtils.copyProperties(cicleDto, cicleModel);
-        cicleModel.setId(cicloOptional.get().getId());
-        cicleModel.setRegistrationDate(cicloOptional.get().getRegistrationDate());
-        return "home/index";
+        cicleService.update(cicleModel, cicloOptional.get().getId());
+        return "redirect:/cicle";
     }
 }

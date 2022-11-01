@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
-@Table(name = "GRANJA_DB")
+@Table(name = "CADASTROCICLO")
 @Getter
 @Setter
 public class CadastroCiclo implements Serializable {

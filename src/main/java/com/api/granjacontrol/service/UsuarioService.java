@@ -20,5 +20,5 @@ public class UsuarioService {
     @Transactional
     public CadastroUsuario save(CadastroUsuario cadastroUsuario){return cadastroUsuarioRepository.save(cadastroUsuario);}
     public List<CadastroUsuario> findAll(){return cadastroUsuarioRepository.findAll();}
-    public Optional<CadastroUsuario> findById(UUID id){return cadastroUsuarioRepository.findById(id);}
+    public CadastroUsuario findByUser(String username, String senha){return cadastroUsuarioRepository.findByUser(username, senha);}
 }

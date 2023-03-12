@@ -12,7 +12,7 @@
 <body>
     <nav>
         <div class="container-md">
-
+            Olá, <span th:if="${usuario}" th:text="${usuario.apelido}"></span> &nbsp;<a th:if="${usuario}" th:href="@{usuario/sair}">Sair</a><span th:unless="${usuario}"><a th:href="@{usuario/cadastro}">Login</a></span>
         </div>
     </nav>
     <div class="container-md">

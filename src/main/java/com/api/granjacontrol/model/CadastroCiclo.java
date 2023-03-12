@@ -10,8 +10,6 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "CADASTROCICLO")
-@Getter
-@Setter
 public class CadastroCiclo implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -30,4 +28,44 @@ public class CadastroCiclo implements Serializable {
 
     @Column(nullable = false)
     private LocalDate registrationDate;
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public String getPeso() {
+        return peso;
+    }
+
+    public void setPeso(String peso) {
+        this.peso = peso;
+    }
+
+    public Integer getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public String getRaca() {
+        return raca;
+    }
+
+    public void setRaca(String raca) {
+        this.raca = raca;
+    }
+
+    public LocalDate getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public void setRegistrationDate(LocalDate registrationDate) {
+        this.registrationDate = registrationDate;
+    }
 }

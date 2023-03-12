@@ -40,7 +40,7 @@ public class CicleController {
         var allValues =  cicleService.findAll();
         model.addAttribute("allValues", allValues);
         model.addAttribute("cicle", new CadastroCiclo());
-        model.getAttribute("usuario");
+
         return "home/index";
     }
     @GetMapping("/{id}")
